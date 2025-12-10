@@ -36,12 +36,20 @@ Button::Button(Vector2 position, Vector2 size)
 
 bool Button::IsPressed(Vector2 MousePos)
 {
+    Rectangle rect = {position.x, position.y, static_cast<float>(texture.width), static_cast<float>(texture.height)};
 
-    return  (texture.width >= MousePos.x || texture.width <= MousePos.x) &&
-            (texture.height >= MousePos.y || texture.height <= MousePos.y);
+    if(CheckCollisionPointRec(MousePos,rect) && IsMouseButtonPressed(MOUSE_BUTTON_LEFT))
+    {
+        return true;
+    }
+    return false;
 }
 
 void Button::Draw()
 {
     DrawTexture(texture, position.x, position.y, WHITE);
+DrawText("te",
+         position.x + texture.width/2 - 10,
+         position.y + texture.height/2 - 12,
+         24, BLACK);
 }
