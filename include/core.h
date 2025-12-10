@@ -9,6 +9,8 @@ private:
 public:
     Entity();
     ~Entity() = default;
+
+    int& GetRate();
 };
 
 
@@ -22,9 +24,7 @@ public:
     Button(Vector2 position, Vector2 size);
     ~Button() = default;
 
-    void Draw();
-
-    bool IsPressed(Vector2 MousePos);
+    bool Draw(const char *text);
 };
 
 

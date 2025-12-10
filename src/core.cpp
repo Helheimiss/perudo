@@ -2,6 +2,18 @@
 #include "raylib.h"
 
 
+Entity::Entity()
+    : rate(0)
+{
+
+}
+
+int& Entity::GetRate()
+{
+    return rate;
+}
+
+
 Cup::Cup()
     : texture(LoadTexture("images/cup.png")),
     source(0, 0, texture.width, texture.height),
@@ -34,8 +46,23 @@ Button::Button(Vector2 position, Vector2 size)
     texture.height = size.y;
 }
 
-bool Button::IsPressed(Vector2 MousePos)
+bool Button::Draw(const char *text)
 {
+    DrawTexture(texture, position.x, position.y, WHITE);
+    Vector2 textureCenter = {
+        position.x + texture.width / 2,
+        position.y + texture.height / 2
+    };
+
+
+    int textWidth = MeasureText(text, 24);
+    DrawText(text,
+            textureCenter.x - textWidth / 2,
+            textureCenter.y - 12,
+            24, BLACK);
+
+
+    Vector2 MousePos = Vector2{GetMouseX(), GetMouseY()};
     Rectangle rect = {position.x, position.y, static_cast<float>(texture.width), static_cast<float>(texture.height)};
 
     if(CheckCollisionPointRec(MousePos,rect) && IsMouseButtonPressed(MOUSE_BUTTON_LEFT))
@@ -43,13 +70,4 @@ bool Button::IsPressed(Vector2 MousePos)
         return true;
     }
     return false;
-}
-
-void Button::Draw()
-{
-    DrawTexture(texture, position.x, position.y, WHITE);
-DrawText("te",
-         position.x + texture.width/2 - 10,
-         position.y + texture.height/2 - 12,
-         24, BLACK);
 }
