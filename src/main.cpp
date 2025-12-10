@@ -9,7 +9,7 @@ int main(void)
 
 
 
-    while (!WindowShouldClose())
+    while (!WindowShouldClose() && GAME_STATE != GAME_STATE_ENUM::IN_EXIT)
     {
         BeginDrawing();
             ClearBackground(Color{106,153,78, 255});
@@ -21,6 +21,12 @@ int main(void)
                 break;
             case GAME_STATE_ENUM::IN_GAME:
                 PlayGame();
+                break;
+            case GAME_STATE_ENUM::IN_OPTIONS:
+                PlayOptions();
+                break;
+            case GAME_STATE_ENUM::IN_RULES:
+                PlayRules();
                 break;
 
             default:

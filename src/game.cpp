@@ -1,6 +1,9 @@
 #include "game.h"
 #include "core.h"
+#include "raylib.h"
 
+
+#pragma region State
 void PlauMenu()
 {
     static Button StartGame(
@@ -8,10 +11,32 @@ void PlauMenu()
         Vector2(150, 50)
     );
 
+    static Button OptionsGame(
+        Vector2{GetScreenWidth()/2.0f-75, GetScreenHeight()/2.0f+25},
+        Vector2(150, 50)
+    );
+
+    static Button RulesGame(
+        Vector2{GetScreenWidth()/2.0f-75, GetScreenHeight()/2.0f+75},
+        Vector2(150, 50)
+    );
+
+    static Button ExitGame(
+        Vector2{GetScreenWidth()/2.0f-75, GetScreenHeight()/2.0f+125},
+        Vector2(150, 50)
+    );
+
     if (StartGame.Draw("start"))
-    {
         GAME_STATE = GAME_STATE_ENUM::IN_GAME;
-    }
+
+    if (OptionsGame.Draw("options"))
+        GAME_STATE = GAME_STATE_ENUM::IN_OPTIONS;
+
+    if (RulesGame.Draw("rules"))
+        GAME_STATE = GAME_STATE_ENUM::IN_RULES;
+
+    if (ExitGame.Draw("exit"))
+        GAME_STATE = GAME_STATE_ENUM::IN_EXIT;
 
 }
 
@@ -46,3 +71,16 @@ void PlayGame()
     }
 
 }
+
+
+void PlayOptions()
+{
+
+}
+
+
+void PlayRules()
+{
+
+}
+#pragma endregion state
