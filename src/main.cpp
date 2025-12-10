@@ -9,7 +9,8 @@ int main(void)
     while (!WindowShouldClose())
     {
         BeginDrawing();
-            ClearBackground(RAYWHITE);
+            ClearBackground(Color{106,153,78, 255});
+            DrawFPS(0,0);
         EndDrawing();
     }
 
