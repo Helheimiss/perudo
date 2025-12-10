@@ -43,15 +43,19 @@ void PlauMenu()
 
 void PlayGame()
 {
-    static Cup f;
+    static Cup CupPlayer;
     static Button stavka(Vector2{0,50}, Vector2(150, 50));
     static Button stavkaplus(Vector2{0,100}, Vector2(150, 50));
     static Button stavkaminus(Vector2{0,150}, Vector2(150, 50));
+    static Button BackButton(Vector2{0, 0}, Vector2{150, 50});
 
     static Entity player;
-    static bool IsPlayerGame = true;
+    bool IsPlayerGame = true;
 
-    f.Draw(Vector2{GetScreenWidth()/2.0f, GetScreenHeight()/2.0f});
+    CupPlayer.Draw(Vector2{GetScreenWidth()/2.0f, GetScreenHeight()/2.0f});
+
+    if (BackButton.Draw("back"))
+        GAME_STATE = GAME_STATE_ENUM::IN_MENU;
 
     if (IsPlayerGame)
     {
@@ -75,12 +79,26 @@ void PlayGame()
 
 void PlayOptions()
 {
-
+    static Button BackButton(Vector2{0, 0}, Vector2{150, 50});
+    if (BackButton.Draw("back"))
+        GAME_STATE = GAME_STATE_ENUM::IN_MENU;
 }
 
 
 void PlayRules()
 {
+    static const char *rule_str = "game rule";
 
+    static Button BackButton(Vector2{0, 0}, Vector2{150, 50});
+    if (BackButton.Draw("back"))
+        GAME_STATE = GAME_STATE_ENUM::IN_MENU;
+
+    DrawText(
+        rule_str,
+        GetScreenWidth()/2,
+        GetScreenHeight()/2,
+        50,
+        BLACK
+    );
 }
 #pragma endregion state
