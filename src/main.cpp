@@ -28,6 +28,9 @@ int main(void)
             case GAME_STATE_ENUM::IN_RULES:
                 PlayRules();
                 break;
+            case GAME_STATE_ENUM::IN_GAMEOVER:
+                PlayGameover();
+                break;
 
             default:
                 break;

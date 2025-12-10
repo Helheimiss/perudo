@@ -101,4 +101,19 @@ void PlayRules()
         BLACK
     );
 }
+
+void PlayGameover()
+{
+    static Button BackButton(Vector2{0, 0}, Vector2{150, 50});
+    if (BackButton.Draw("back"))
+        GAME_STATE = GAME_STATE_ENUM::IN_MENU;
+
+    DrawText(
+        "GAMEOVER",
+        GetScreenWidth()/2,
+        GetScreenHeight()/2,
+        50,
+        BLACK
+    );
+}
 #pragma endregion state
