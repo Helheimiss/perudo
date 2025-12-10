@@ -8,7 +8,6 @@ int main(void)
     SetTargetFPS(60);
 
 
-
     while (!WindowShouldClose() && GAME_STATE != GAME_STATE_ENUM::IN_EXIT)
     {
         BeginDrawing();

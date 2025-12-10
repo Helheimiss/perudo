@@ -2,6 +2,7 @@
 #include "raylib.h"
 
 
+#pragma region entity
 Entity::Entity()
     : rate(0)
 {
@@ -12,8 +13,10 @@ int& Entity::GetRate()
 {
     return rate;
 }
+#pragma endregion entity
 
 
+#pragma region cup
 Cup::Cup()
     : texture(LoadTexture("images/cup.png")),
     source(0, 0, texture.width, texture.height),
@@ -35,8 +38,10 @@ Texture2D& Cup::GetTexture()
 {
     return texture;
 }
+#pragma endregion cup
 
 
+#pragma region button
 Button::Button(Vector2 position, Vector2 size)
     : position(position),
     size(size)
@@ -71,3 +76,4 @@ bool Button::Draw(const char *text)
     }
     return false;
 }
+#pragma endregion button
