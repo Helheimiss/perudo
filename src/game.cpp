@@ -2,6 +2,8 @@
 #include "core.h"
 #include "raylib.h"
 
+#include <vector>
+
 
 #pragma region State
 void PlauMenu()
@@ -50,7 +52,7 @@ void PlayGame()
     static Button stavkaminus(Vector2{0,200}, Vector2(200, 50));
     static Button BackButton(Vector2{0, 0}, Vector2{200, 50});
 
-    Entity bots[BOTS_COUNT];
+    static std::vector<Entity> bots(BOTS_COUNT);
 
     static Entity player;
     bool IsPlayerGame = true;
