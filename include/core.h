@@ -1,16 +1,17 @@
 #pragma once
 #include "raylib.h"
+#include <utility>
 
 
 class Entity
 {
 private:
-    int rate;
+    std::pair<int, int> rate;
 public:
     Entity();
     ~Entity() = default;
 
-    int& GetRate();
+    std::pair<int, int>& GetRate();
 };
 
 

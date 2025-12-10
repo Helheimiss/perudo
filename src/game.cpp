@@ -44,10 +44,13 @@ void PlauMenu()
 void PlayGame()
 {
     static Cup CupPlayer;
-    static Button stavka(Vector2{0,50}, Vector2(150, 50));
-    static Button stavkaplus(Vector2{0,100}, Vector2(150, 50));
-    static Button stavkaminus(Vector2{0,150}, Vector2(150, 50));
-    static Button BackButton(Vector2{0, 0}, Vector2{150, 50});
+    static Button play(Vector2{0,50}, Vector2(200, 50));
+    static Button stavka(Vector2{0,100}, Vector2(200, 50));
+    static Button stavkaplus(Vector2{0,150}, Vector2(200, 50));
+    static Button stavkaminus(Vector2{0,200}, Vector2(200, 50));
+    static Button BackButton(Vector2{0, 0}, Vector2{200, 50});
+
+    Entity bots[BOTS_COUNT];
 
     static Entity player;
     bool IsPlayerGame = true;
@@ -59,18 +62,32 @@ void PlayGame()
 
     if (IsPlayerGame)
     {
-        if (stavka.Draw(TextFormat("stavka: %02i", player.GetRate())))
+        if (play.Draw("play"))
         {
-            // puts("yes");
+            //todo
         }
 
-        if (player.GetRate() < 60 && stavkaplus.Draw("++"))
+
+        if (stavka.Draw(TextFormat("stavka: %02ix%02i", player.GetRate().first, player.GetRate().second)))
         {
-            ++player.GetRate();
+            if (player.GetRate().second < 5)
+            {
+                ++player.GetRate().second;
+            }
+            else
+            {
+                player.GetRate().second = 0;
+            }
+
         }
-        if (player.GetRate() > 0 && stavkaminus.Draw("--"))
+
+        if (player.GetRate().first < 5 && stavkaplus.Draw("++"))
         {
-            --player.GetRate();
+            ++player.GetRate().first;
+        }
+        if (player.GetRate().first > 0 && stavkaminus.Draw("--"))
+        {
+            --player.GetRate().first;
         }
     }
 

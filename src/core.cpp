@@ -4,12 +4,12 @@
 
 #pragma region entity
 Entity::Entity()
-    : rate(0)
 {
-
+    rate.first = 0;
+    rate.second = 0;
 }
 
-int& Entity::GetRate()
+std::pair<int, int>& Entity::GetRate()
 {
     return rate;
 }
