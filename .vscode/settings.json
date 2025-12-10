@@ -1,0 +1,8 @@
+{
+    "files.trimTrailingWhitespace": true,
+    "cmake.generator": "Ninja",
+    "C_Cpp.default.cStandard": "gnu23",
+    "C_Cpp.default.cppStandard": "gnu++20",
+    "C_Cpp.default.intelliSenseMode": "linux-gcc-x64",
+    "C_Cpp.default.configurationProvider": "ms-vscode.cmake-tools"
+}
