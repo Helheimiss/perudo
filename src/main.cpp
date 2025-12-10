@@ -1,44 +1,31 @@
 #include "raylib.h"
-#include "core.h"
-#include <iostream>
+#include "game.h"
+
 
 int main(void)
 {
     InitWindow(1280, 720, "perudo");
     SetTargetFPS(60);
 
-    Cup f;
-    Button stavka(Vector2{0,50}, Vector2(150, 50));
-    Button stavkaplus(Vector2{0,100}, Vector2(150, 50));
-    Button stavkaminus(Vector2{0,150}, Vector2(150, 50));
 
-    Entity player;
-    bool IsPlayerGame = true;
 
     while (!WindowShouldClose())
     {
         BeginDrawing();
             ClearBackground(Color{106,153,78, 255});
-            f.Draw(Vector2{GetScreenWidth()/2.0f, GetScreenHeight()/2.0f});
 
-            if (IsPlayerGame)
+            switch (GAME_STATE)
             {
-                if (stavka.Draw(TextFormat("stavka: %02i", player.GetRate())))
-                {
-                    puts("yes");
-                }
+            case GAME_STATE_ENUM::IN_MENU:
+                PlauMenu();
+                break;
+            case GAME_STATE_ENUM::IN_GAME:
+                PlayGame();
+                break;
 
-                if (player.GetRate() < 60 && stavkaplus.Draw("++"))
-                {
-                    ++player.GetRate();
-                }
-                if (player.GetRate() > 0 && stavkaminus.Draw("--"))
-                {
-                    --player.GetRate();
-                }
+            default:
+                break;
             }
-
-
 
 
             DrawFPS(0,0);

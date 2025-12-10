@@ -16,6 +16,7 @@ add_subdirectory(./libs/raylib)
 add_executable(${PROJECT_NAME}
     ./src/main.cpp
     ./src/core.cpp
+    ./src/game.cpp
 )
 
 target_compile_options(${PROJECT_NAME} PRIVATE -static)
